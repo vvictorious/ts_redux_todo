@@ -4,7 +4,7 @@ import TodoListItem from './TodoListItem'
 const todos: Array<Todo> = [
   {
     text: 'Practice ts just a little bit longer',
-    complete: true   
+    complete: false   
   }
 ]
 
