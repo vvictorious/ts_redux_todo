@@ -2,6 +2,7 @@ import React from 'react'
 
 interface TodoListItemProps {
     todo: Todo;
+    toggleTodo: ToggleTodo;
 } 
 
 const TodoListItem: React.FC<TodoListItemProps> = ({todo}) => {
