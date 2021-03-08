@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const App: React.FC = () => {
 
 
   return (
-    <div>
-      <h1>hi</h1>
-    </div>
+    <Fragment>
+      <input type='text' name='note' placeholder='Note' />
+      <button>Add Note</button>
+    </Fragment>
   );
 }
 
