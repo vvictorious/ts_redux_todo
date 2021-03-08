@@ -3,10 +3,9 @@ import { NewNoteInput } from './NewNoteInput'
 
 const App: React.FC = () => {
 
-
   return (
     <Fragment>      
-      <NewNoteInput />
+      <NewNoteInput addNote={alert} />
       <hr />
       <ul>
         <li>Some note</li>
