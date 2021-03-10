@@ -1,28 +1,17 @@
 import React, { Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { NewNoteInput } from './NewNoteInput'
-import { NotesState } from './notesReducer'
+import { AddNoteInput } from './components/AddNoteInput'
 
 const App: React.FC = () => {
 
-  const notes = useSelector<NotesState, NotesState["notes"]>( (state) => state.notes)
-  const dispatch = useDispatch()
-
-  const addNote = (note:string) => {
-    dispatch({
-      type: "ADD_NOTE",
-      payload: note
-    })
-  }
 
   return (
-    <Fragment>      
-      <NewNoteInput addNote={addNote} />
+    <Fragment>
+      <AddNoteInput addNote={alert} />
       <hr />
       <ul>
-          {notes.map(note => (
-            <li key={note}>{note}</li>
-          ))}
+        <li>
+          note
+        </li>
       </ul>
     </Fragment>
   );
