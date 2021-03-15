@@ -1,4 +1,5 @@
-export interface notesState {
+
+export interface NotesState {
     notes: string[]
 }
 
@@ -7,17 +8,21 @@ const initialState = {
 }
 
 type Action = {
-    type: "ADD_NOTE",
+    type: string,
     payload: string
 }
 
-
-export const notesReducer = (state:notesState = initialState, action:Action) => {
+export const notesReducer = (state:NotesState = initialState, action:Action) => {
     switch (action.type) {
         case "ADD_NOTE":
             return {
                 ...state,
                 notes: [...state.notes, action.payload]
+            }
+        case "DELETE_NOTE":
+            return {
+                ...state,
+                notes: [...state.notes.filter(note => note !== action.payload)]
             }
         default:
             return state

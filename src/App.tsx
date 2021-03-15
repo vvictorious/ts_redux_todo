@@ -1,35 +1,28 @@
-import React, { Fragment } from 'react';
-import { AddNoteInput } from './components/AddNoteInput'
-import { useSelector, useDispatch } from 'react-redux'
-import { notesState } from './redux/notesReducer'
+import React, { Fragment} from 'react'
+import { AddNoteInput } from './components/NoteInput'
+import { Note } from './components/Note'
+import { useSelector } from 'react-redux'
+import { NotesState } from './redux/notesReducer'
 
-const App: React.FC = () => {
+const App = () => {
 
-  const notes = useSelector<notesState, notesState['notes']>(state => state.notes)
-  const dispatch = useDispatch()
+  const notes = useSelector<NotesState, NotesState['notes']>(state => state.notes)
+  console.log(notes)
 
-  const addNote = (note:string) => {
-    dispatch({
-      type: 'ADD_NOTE',
-      payload: note
-    })
-  }
 
   return (
     <Fragment>
-      <AddNoteInput addNote={addNote} />
-      <hr />
+      <h1>Todo List</h1>
+      <AddNoteInput />
       <ul>
         {
           notes.map(note => (
-            <li key={note}>
-              {note}
-            </li>
+            <Note key={note} note={note} />
           ))
         }
       </ul>
     </Fragment>
-  );
+  )
 }
 
-export default App;
+export default App
