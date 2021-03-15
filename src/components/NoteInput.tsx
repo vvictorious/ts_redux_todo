@@ -1,9 +1,6 @@
 import React, { useState, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
-// interface NotesProps {
-//     addNote: (note:string) => void
-// }
 
 export const AddNoteInput:React.FC = () => {
 
