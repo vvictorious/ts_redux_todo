@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 interface NoteProps {
@@ -8,6 +8,7 @@ interface NoteProps {
 export const Note:React.FC<NoteProps> = ({ note }) => {
 
     const [edit, setEdit] = useState(false)
+    const [newNote, setNewNote] = useState(note)
 
     const dispatch = useDispatch()    
 
@@ -23,22 +24,30 @@ export const Note:React.FC<NoteProps> = ({ note }) => {
     }
 
     const dispatchEditHandler = () => {
-        console.log('yo')
+        dispatch({
+            type: "EDIT_NOTE",
+            payload: newNote
+        })
+        setEdit(false)
+    }
+
+    const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
+        setNewNote(e.target.value)
     }
 
     if (edit) {
         return (
             <li>
-                <input type='text' value={note} />
+                <input type='text' value={newNote} onChange={handleChange} />
                 <button onClick={dispatchEditHandler}>Submit Edit</button>
             </li>
         )
     } else {
         return (
             <li>
-            {note}
-            <button onClick={deleteNote}>Delete Note</button>       
-            <button onClick={editNote}>Edit Note</button>     
+                {newNote}
+                <button onClick={deleteNote}>Delete Note</button>       
+                <button onClick={editNote}>Edit Note</button>     
             </li>
         )
     }

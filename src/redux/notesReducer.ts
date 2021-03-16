@@ -1,6 +1,6 @@
 
 export interface NotesState {
-    notes: string[]
+    notes: any[]
 }
 
 const initialState = {
@@ -23,6 +23,13 @@ export const notesReducer = (state:NotesState = initialState, action:Action) => 
             return {
                 ...state,
                 notes: [...state.notes.filter(note => note !== action.payload)]
+            }
+        case "EDIT_NOTE":
+            return {
+                ...state,
+                notes: [...state.notes.map(note => {
+                    return note === action.payload ? action.payload : note
+                })]
             }
         default:
             return state
